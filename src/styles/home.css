@@ -1,0 +1,16 @@
+body {
+    width: 800px;
+    margin: auto;
+}
+
+.profile-img {
+    width: 150px;
+    height: 150px;
+    border-radius: 100%;
+    margin: 10px;
+    margin-left: 50px;
+}
+
+.btn-link {
+    text-decoration: none;
+}
