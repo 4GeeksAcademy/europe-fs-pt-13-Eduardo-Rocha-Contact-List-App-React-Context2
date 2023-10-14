@@ -10,7 +10,7 @@ const Contact = () => {
 
 	return (
 		<>
-			<Link className="btn-link" to="/addContact">
+			<Link className="btn-link" to="/contact">
 				<div className="d-grid gap-2 d-md-flex justify-content-md-end">
 					<button className="btn btn-success my-3">Add new contact</button>
 				</div>
