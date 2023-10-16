@@ -5,7 +5,7 @@ import { faPencil, faTrashCan, faLocationDot, faPhone, faEnvelope } from '@forta
 import { Link } from 'react-router-dom';
 
 const ContactCard = () => {
-    const { store } = useContext(Context);
+    const { store, actions } = useContext(Context);
 
 
     return (

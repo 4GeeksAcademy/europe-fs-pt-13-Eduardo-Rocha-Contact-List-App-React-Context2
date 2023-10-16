@@ -1,30 +1,17 @@
-import React, { useContext } from "react";
-import { Link, useParams } from "react-router-dom";
+import React, { useState, useContext } from "react";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import { Context } from '../store/appContext';
 
-
 const Form = () => {
-
     const { id } = useParams()
     const { store, actions } = useContext(Context);
-    console.log(store.contacts);
-    let contact;
-    let name;
-    let email;
-    let address;
-    let phone;
-    const contactIndex = parseInt(id, 10);
+    const contact = store.contacts.find((contact, idx) => idx === parseInt(id, 10)) || {};
+    const navigate = useNavigate();
+
+    console.log(store.contacts, id);
+
     //get store to get if the id exists to then grab which record it is and map it to the fields
 
-    if (!isNaN(contactIndex) && contactIndex >= 0 && contactIndex < store.contacts.length) {
-        contact = store.contacts[contactIndex];
-        name = contact.full_name;
-        email = contact.email;
-        address = contact.address;
-        phone = contact.phone;
-    } else {
-        console.log("Contact not found or invalid index");
-    }
 
 
     return (
@@ -33,22 +20,22 @@ const Form = () => {
             <form>
                 <div className="mb-3">
                     <label htmlFor="full-name" className="form-label">Full Name</label>
-                    <input defaultValue={id ? name : null} type="text" className="form-control" id="full-name" aria-describedby="fullnameHelp" placeholder="Enter Name" />
+                    <input type="text" className="form-control" id="full-name" aria-describedby="fullnameHelp" placeholder="Enter Name" defaultValue={id ? contact.full_name : null} onKeyDown={actions.handleInputChange} />
                 </div>
                 <div className="mb-3">
                     <label htmlFor="email" className="form-label">Email</label>
-                    <input defaultValue={id ? email : null} type="email" className="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter Email" />
+                    <input type="email" className="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter Email" defaultValue={id ? contact.email : null} onKeyDown={actions.handleInputChange} />
                 </div>
                 <div className="mb-3">
                     <label htmlFor="phone" className="form-label">Phone</label>
-                    <input defaultValue={id ? phone : null} type="text" className="form-control" id="phone" aria-describedby="phoneHelp" placeholder="Enter Phone" />
+                    <input type="text" className="form-control" id="phone" aria-describedby="phoneHelp" placeholder="Enter Phone" defaultValue={id ? contact.phone : null} onKeyDown={actions.handleInputChange} />
                 </div>
                 <div className="mb-3">
                     <label htmlFor="address" className="form-label">Address</label>
-                    <input defaultValue={id ? address : null} type="text" className="form-control" id="address" aria-describedby="addressHelp" placeholder="Enter Address" />
+                    <input type="text" className="form-control" id="address" aria-describedby="addressHelp" placeholder="Enter Address" defaultValue={id ? contact.address : null} onKeyDown={actions.handleInputChange} />
                 </div>
                 <div className="d-grid gap-2">
-                    <button type="text" className="btn btn-primary">Save</button>
+                    <button type="button" className="btn btn-primary" onClick={() => actions.handleSave(id, navigate)} >Save</button>
                 </div>
                 <Link to="/">
                     <span>or get back to contacts</span>
