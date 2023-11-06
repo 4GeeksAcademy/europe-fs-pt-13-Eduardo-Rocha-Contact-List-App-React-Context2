@@ -6,7 +6,7 @@ import injectContext from "./store/appContext";
 import { Footer } from "./component/footer";
 import ScrollToTop from "./component/scrollToTop";
 import ContactForm from "./views/ContactForm";
-import Contact from "./views/contact";
+import Contact from "./views/Contact";
 
 //create your first component
 const Layout = () => {
