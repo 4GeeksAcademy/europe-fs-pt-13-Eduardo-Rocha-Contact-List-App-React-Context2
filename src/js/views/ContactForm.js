@@ -10,12 +10,6 @@ const ContactForm = () => {
     const contact = store.contacts.find((contact, idx) => idx === parseInt(id, 10)) || {};
     const navigate = useNavigate();
 
-    //console.log(store.contacts, id);
-
-    //get store to get if the id exists to then grab which record it is and map it to the fields
-
-
-
     return (
         <>
             <h1 className="text-center mt-5">{id ? "Edit Contact" : "Add Contact"}</h1>
